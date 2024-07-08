@@ -18,6 +18,8 @@ function refreshWeather(response) {
 
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
+
+  getForecast(response.data.city);
 }
 function formatDate(date) {
   let minutes = date.getMinutes();
@@ -33,7 +35,6 @@ function formatDate(date) {
   ];
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
-
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -74,21 +75,31 @@ window.onload = function () {
   initCity();
 };
 
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = "40912tb49034f3e73f11616ed1a9396o";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `<div class="weather-forecast-day">
-            <div class="weather-forecast-date">${day}</div>
+            <div class="weather-forecast-date">Tue</div>
             <div class="weather-forecast-icon">🌤️</div>
             <div class="weather-forecast-temp">
               <div class="weather-forecast-temperature">
-                <strong>19º</strong>
+                <strong>${Math.round(day.temperature.maximum)}º</strong>
               </div>
-              <div class="weather-forecast-temperature">15º</div>
+              <div class="weather-forecast-temperature">${Math.round(
+                day.temperature.minimum
+              )}º</div>
             </div>
           </div>`;
   });
