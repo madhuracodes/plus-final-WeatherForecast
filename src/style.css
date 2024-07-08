@@ -96,7 +96,7 @@ main {
 
 .weather-forecast-icon {
   text-align: center;
-  font-size: 30px;
+  font-size: 5px;
 }
 
 .weather-forecast-temp {
@@ -114,4 +114,5 @@ main {
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
+  max-width: fit-content;
 }
