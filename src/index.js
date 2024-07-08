@@ -73,3 +73,27 @@ searchFormElement.addEventListener("submit", handleSearchSubmit);
 window.onload = function () {
   initCity();
 };
+
+function displayForecast() {
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="weather-forecast-day">
+            <div class="weather-forecast-date">${day}</div>
+            <div class="weather-forecast-icon">🌤️</div>
+            <div class="weather-forecast-temp">
+              <div class="weather-forecast-temperature">
+                <strong>19º</strong>
+              </div>
+              <div class="weather-forecast-temperature">15º</div>
+            </div>
+          </div>`;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+displayForecast();

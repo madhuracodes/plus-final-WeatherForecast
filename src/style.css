@@ -85,3 +85,33 @@ main {
   font-weight: bold;
   color: rgb(71, 70, 70);
 }
+
+.weather-forecast-date {
+  text-align: center;
+  color: rgb(49, 48, 48);
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.weather-forecast-icon {
+  text-align: center;
+  font-size: 30px;
+}
+
+.weather-forecast-temp {
+  text-align: center;
+  font-size: 15px;
+  color: rgb(242, 133, 151);
+  display: flex;
+  justify-content: center;
+}
+.weather-forecast-temperature {
+  padding: 0 5px;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
